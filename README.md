@@ -2,6 +2,9 @@
 
 **ClansWebhook** is an Oxide plugin for Rust that sends announcements to a Discord webhook whenever there is a clan-related event, such as creating or disbanding a clan, or adding or removing a player from a clan. Intended for use with the clan plugin by K1lly0u [Link](https://umod.org/plugins/clans)
 
+## Author
+Plugin developed by **herbs.acab**
+
 ## Features
 
 - Sends notifications to a Discord webhook for the following events:
