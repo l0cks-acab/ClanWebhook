@@ -9,6 +9,7 @@
   - Clan disbandment
   - Player joining a clan
   - Player leaving a clan
+  - Provides an admin command to post all clans and their members to the webhook (/postclans).
 
 ## Installation
 
@@ -24,3 +25,4 @@ The configuration file (`oxide/config/ClansWebhook.json`) will look like this:
 {
   "Webhook URL": "YOUR_DISCORD_WEBHOOK_URL_HERE"
 }
+```
