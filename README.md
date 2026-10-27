@@ -1,31 +1,47 @@
 # ClansWebhook
 
-**ClansWebhook** is an Oxide plugin for Rust that sends announcements to a Discord webhook whenever there is a clan-related event, such as creating or disbanding a clan, or adding or removing a player from a clan. Intended for use with the clan plugin by K1lly0u [Link](https://umod.org/plugins/clans)
+**ClansWebhook** is an Oxide plugin for Rust that sends clan events to a Discord webhook. Built for the [Clans](https://umod.org/plugins/clans) plugin by K1lly0u.
 
 ## Author
 Plugin developed by **herbs.acab**
 
 ## Features
 
-- Sends notifications to a Discord webhook for the following events:
-  - Clan creation
-  - Clan disbandment
-  - Player joining a clan
-  - Player leaving a clan
-  - Provides an admin command to post all clans and their members to the webhook (/postclans).
+- Discord embed notifications (colored, timestamped) for:
+  - Clan created
+  - Clan disbanded (with member list)
+  - Player joined a clan
+  - Player left a clan
+  - Clan updated (off by default, noisy)
+  - Clan chat (off by default)
+- Each event can be toggled in config
+- Rate-limited send queue with automatic retry on Discord `429`
+- `/postclans` posts every clan and its members to the webhook
 
 ## Installation
 
-1. Download the `ClansWebhook.cs` file and place it in your `oxide/plugins` directory.
-2. Start your Rust server to generate the default configuration file.
-3. Configure the plugin by editing the `ClansWebhook.json` file in your `oxide/config` directory.
+1. Place `ClansWebhook.cs` in `oxide/plugins`.
+2. Start the server to generate the default config.
+3. Edit `oxide/config/ClansWebhook.json` and reload the plugin.
+
+## Permissions
+
+- `clanswebhook.admin` — allows `/postclans` (server admins and console can always use it)
 
 ## Configuration
 
-The configuration file (`oxide/config/ClansWebhook.json`) will look like this:
-
 ```json
 {
-  "Webhook URL": "YOUR_DISCORD_WEBHOOK_URL_HERE"
+  "Webhook URL": "YOUR_DISCORD_WEBHOOK_URL_HERE",
+  "Footer Text": "developed by herbs.acab",
+  "Seconds Between Messages (rate limit)": 1.0,
+  "Events": {
+    "Clan Created": true,
+    "Clan Disbanded": true,
+    "Member Joined": true,
+    "Member Left": true,
+    "Clan Updated (noisy)": false,
+    "Clan Chat": false
+  }
 }
 ```
